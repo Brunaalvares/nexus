@@ -21,7 +21,6 @@ O formulário envia `POST /api/leads`. O registro acontece, nesta ordem de dispo
 - Arquivo local `data/leads.jsonl`, ignorado pelo git.
 - Webhook JSON, quando `LEAD_WEBHOOK_URL` existe. Use essa URL para ligar o formulário ao CRM (RD Station, CV, Make ou o sistema da imobiliária).
 
-O WhatsApp de Marcelo Alvares lê `WHATSAPP_E164` (somente dígitos, com DDI, por exemplo `5598988880000`). Sem essa variável, a página mantém o formulário e omite o link direto.
 
 ## O que a página usa
 
