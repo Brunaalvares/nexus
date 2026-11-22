@@ -132,11 +132,21 @@
   }
 }
 
-#galeria > article,
-#complexo > article,
-main > section:not(#topo):not(#galeria):not(#complexo) {
+main > section:not(#topo):not(#plantas) {
   content-visibility: auto;
   contain-intrinsic-size: auto 100svh;
+}
+
+.reel .shot {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.shot-photo {
+  transform: scale(1.06);
 }
 
 .metal {
@@ -178,6 +188,12 @@ main > section:not(#topo):not(#galeria):not(#complexo) {
     animation-timeline: view();
     animation-range: cover 0% cover 100%;
   }
+
+  .shot-photo {
+    animation: film-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+  }
 }
 
 @keyframes rise {
@@ -200,6 +216,15 @@ main > section:not(#topo):not(#galeria):not(#complexo) {
   }
 }
 
+@keyframes film-in {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -207,7 +232,8 @@ main > section:not(#topo):not(#galeria):not(#complexo) {
 
   .hero-still,
   .reveal,
-  .parallax-photo {
+  .parallax-photo,
+  .shot-photo {
     animation: none !important;
   }
 }

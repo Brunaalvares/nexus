@@ -80,10 +80,10 @@ export function Plants() {
   }
 
   return (
-    <section id="plantas" className="bg-[#0c0c0c] px-6 py-24 md:px-10 md:py-32">
+    <section id="plantas" className="bg-[#070707] px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <p className="kicker">Plantas</p>
-        <h2 className="mt-5 max-w-3xl font-[family-name:var(--font-syne)] text-4xl leading-[0.95] font-semibold tracking-[-0.03em] md:text-6xl">
+        <h2 className="mt-4 max-w-3xl font-[family-name:var(--font-syne)] text-3xl leading-[0.95] font-semibold tracking-[-0.03em] md:text-5xl">
           Escolha uma tipologia.
         </h2>
         <p className="mt-6 max-w-xl text-base font-light text-[#c9c2b6]">
@@ -160,60 +160,41 @@ export function Plants() {
           </div>
         ) : null}
 
-        <div className="mt-10 grid items-start gap-10 lg:grid-cols-[220px_1fr]">
-          <div className="flex flex-col">
-            {segment === "lojas"
-              ? stores.map((item) => (
-                  <TypeButton
-                    key={item.id}
-                    active={item.id === store.id}
-                    label={`${item.name} · ${item.area}`}
-                    onClick={() => setStoreId(item.id)}
-                  />
-                ))
-              : (segment === "escritorios" ? leadOffice : types).map((item) => (
-                  <TypeButton
-                    key={item.id}
-                    active={item.id === currentType.id}
-                    label={`${item.name} · ${item.area}`}
-                    onClick={() => setTypeId(item.id)}
-                  />
-                ))}
+        <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-[1.35fr_0.75fr]">
+          <div className="relative min-h-[320px] overflow-hidden bg-[#10141c]">
+            <div className="relative aspect-[16/11] md:aspect-auto md:h-full md:min-h-[520px]">
+              <img
+                src={plate}
+                alt={alt}
+                width={1600}
+                height={800}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-contain"
+              />
+            </div>
           </div>
 
-          <div>
-            <div className="relative overflow-hidden bg-[#f6f3ec]">
-              <div className="relative aspect-[16/10] md:aspect-[16/9]">
-                <img
-                  src={plate}
-                  alt={alt}
-                  width={1600}
-                  height={800}
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-contain"
-                />
-              </div>
+          <aside className="flex flex-col border border-white/10 bg-[#101010] p-5 md:p-6">
+            <div className="flex max-h-40 flex-col overflow-auto">
+              {segment === "lojas"
+                ? stores.map((item) => (
+                    <TypeButton
+                      key={item.id}
+                      active={item.id === store.id}
+                      label={`${item.name} · ${item.area}`}
+                      onClick={() => setStoreId(item.id)}
+                    />
+                  ))
+                : (segment === "escritorios" ? leadOffice : types).map((item) => (
+                    <TypeButton
+                      key={item.id}
+                      active={item.id === currentType.id}
+                      label={`${item.name} · ${item.area}`}
+                      onClick={() => setTypeId(item.id)}
+                    />
+                  ))}
             </div>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button
-                type="button"
-                variant="outline"
-                className="h-11 rounded-none border-white/25 bg-transparent px-5 text-[0.7rem] tracking-[0.16em] text-[#f4f1ea] uppercase hover:bg-white hover:text-[#141414]"
-                onClick={() => setZoom(true)}
-              >
-                Ampliar planta
-              </Button>
-              <Button
-                type="button"
-                className="h-11 rounded-none bg-[#f4f1ea] px-5 text-[0.7rem] tracking-[0.16em] text-[#141414] uppercase hover:bg-[#c4a574]"
-                onClick={requestInfo}
-              >
-                Solicitar informações
-              </Button>
-            </div>
-
             <Ficha
               segment={segment}
               tower={tower}
@@ -221,7 +202,24 @@ export function Plants() {
               store={store}
               level={level}
             />
-          </div>
+            <div className="mt-auto flex flex-wrap gap-3 pt-6">
+              <Button
+                type="button"
+                variant="outline"
+                className="h-11 rounded-full border-white/25 bg-transparent px-5 text-[0.7rem] tracking-[0.14em] text-[#f4f1ea] uppercase hover:bg-white hover:text-[#141414]"
+                onClick={() => setZoom(true)}
+              >
+                Ampliar planta
+              </Button>
+              <Button
+                type="button"
+                className="h-11 rounded-full bg-[#f4f1ea] px-5 text-[0.7rem] tracking-[0.14em] text-[#141414] uppercase hover:bg-[#c4a574]"
+                onClick={requestInfo}
+              >
+                Solicitar informações
+              </Button>
+            </div>
+          </aside>
         </div>
 
         <p className="mt-12 max-w-3xl text-xs leading-relaxed text-[#8d877c]">
