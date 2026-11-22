@@ -6,13 +6,17 @@ import "./globals.css";
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  preload: true,
 });
 
 const syne = Syne({
   subsets: ["latin"],
   variable: "--font-syne",
-  weight: ["500", "600", "700"],
+  weight: ["600"],
+  display: "swap",
+  preload: false,
 });
 
 const title = "Nexus Coupé — Renascença, São Luís | Marcelo Alvares Imóveis";
@@ -43,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     locale: "pt_BR",
     type: "website",
-    images: [{ url: "/media/hero.webp", width: 2200, height: 1502, alt: "Perspectiva do Nexus Coupé" }],
+    images: [{ url: "/media/hero.webp", width: 1800, height: 1229, alt: "Perspectiva do Nexus Coupé" }],
   },
   twitter: {
     card: "summary_large_image",

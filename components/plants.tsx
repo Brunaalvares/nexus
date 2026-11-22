@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -185,12 +184,14 @@ export function Plants() {
           <div>
             <div className="relative overflow-hidden bg-[#f6f3ec]">
               <div className="relative aspect-[16/10] md:aspect-[16/9]">
-                <Image
+                <img
                   src={plate}
                   alt={alt}
-                  fill
-                  sizes="(min-width: 1024px) 70vw, 100vw"
-                  className="object-contain"
+                  width={1600}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-contain"
                 />
               </div>
             </div>
@@ -230,21 +231,24 @@ export function Plants() {
         </p>
       </div>
 
-      <Dialog open={zoom} onOpenChange={setZoom}>
-        <DialogContent className="max-h-[92svh] overflow-auto bg-[#f6f3ec] sm:max-w-6xl">
-          <DialogTitle className="text-[#161616]">{alt}</DialogTitle>
-          <DialogDescription className="text-[#5c574f]">
-            Prancha em tamanho maior. A metragem comercial está na ficha.
-          </DialogDescription>
-          <Image
-            src={plate}
-            alt={alt}
-            width={2000}
-            height={1100}
-            className="h-auto w-full"
-          />
-        </DialogContent>
-      </Dialog>
+      {zoom ? (
+        <Dialog open={zoom} onOpenChange={setZoom}>
+          <DialogContent className="max-h-[92svh] overflow-auto bg-[#f6f3ec] sm:max-w-6xl">
+            <DialogTitle className="text-[#161616]">{alt}</DialogTitle>
+            <DialogDescription className="text-[#5c574f]">
+              Prancha em tamanho maior. A metragem comercial está na ficha.
+            </DialogDescription>
+            <img
+              src={plate}
+              alt={alt}
+              width={1600}
+              height={800}
+              decoding="async"
+              className="h-auto w-full"
+            />
+          </DialogContent>
+        </Dialog>
+      ) : null}
     </section>
   );
 }

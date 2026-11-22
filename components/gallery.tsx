@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { gallery } from "@/lib/site";
 
 export function Gallery() {
@@ -6,12 +5,15 @@ export function Gallery() {
     <section id="galeria" aria-label="Galeria do Nexus Coupé">
       {gallery.map((frame) => (
         <article key={frame.src} className="relative min-h-[100svh] overflow-hidden">
-          <Image
+          <img
             src={frame.src}
             alt={`${frame.kicker}: ${frame.title}`}
-            fill
-            sizes="100vw"
-            className="object-cover"
+            width={1500}
+            height={900}
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+            className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-[#090909]/20 to-[#090909]/15" />
           <div className="relative z-10 flex min-h-[100svh] items-end px-6 pb-16 md:px-16 md:pb-20">

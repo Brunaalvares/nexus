@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { CityMap } from "@/components/city-map";
 import { address } from "@/lib/site";
 
 export function Location() {
@@ -31,12 +31,14 @@ export function Location() {
         </div>
         <div className="lg:col-span-7">
           <figure className="relative aspect-[4/3] overflow-hidden">
-            <Image
+            <img
               src="/media/aerea.webp"
               alt="Fotografia aérea do Renascença, no eixo da Avenida Coronel Colares Moreira"
-              fill
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover"
+              width={1200}
+              height={1200}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
             />
             <figcaption className="absolute right-0 bottom-0 left-0 bg-[#090909]/75 px-4 py-3 text-xs text-[#d8d2c7]">
               Vista aérea do Renascença. Imagem: Esri, Maxar, Earthstar Geographics.
@@ -48,12 +50,14 @@ export function Location() {
       <div className="mx-auto mt-8 grid max-w-6xl gap-8 lg:grid-cols-2">
         <figure>
           <div className="relative aspect-[16/10] bg-[#111]">
-            <Image
+            <img
               src="/media/implantacao.webp"
               alt="Implantação do Nexus Coupé com frente para a Avenida Colares Moreira, indicando Lead Office, Open Design, On Residence e Nexus Mall"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-contain"
+              width={1400}
+              height={885}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-contain"
             />
           </div>
           <figcaption className="mt-3 text-xs text-[#8d877c]">
@@ -61,12 +65,9 @@ export function Location() {
           </figcaption>
         </figure>
         <div>
-          <iframe
+          <CityMap
             title="Mapa da Avenida Coronel Colares Moreira no Renascença, São Luís"
             src={mapSrc}
-            className="h-[360px] w-full border-0 grayscale md:h-full md:min-h-[420px]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
           />
           <p className="mt-3 text-xs leading-relaxed text-[#8d877c]">
             O mapa situa a avenida no Renascença. O número do lote é confirmado no

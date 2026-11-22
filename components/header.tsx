@@ -9,14 +9,23 @@ export function Header({ whatsapp }: { whatsapp: string | null }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let frame = 0;
     const onScroll = () => {
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      setSolid(window.scrollY > 24);
-      setProgress(height > 0 ? window.scrollY / height : 0);
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const y = window.scrollY;
+        setSolid(y > 24);
+        setProgress(height > 0 ? y / height : 0);
+      });
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (

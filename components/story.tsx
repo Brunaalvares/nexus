@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export function Story() {
   return (
     <section id="conceito" className="bg-[#090909]">
@@ -19,12 +17,14 @@ export function Story() {
         </div>
       </div>
       <div className="relative h-[78svh] overflow-hidden md:h-[88svh]">
-        <Image
+        <img
           src="/media/conjunto.webp"
           alt="Fachada ampla do Nexus Coupé, com as duas torres sobre o mall e o paisagismo da avenida"
-          fill
-          sizes="100vw"
-          className="parallax-photo object-cover object-center"
+          width={1600}
+          height={1092}
+          loading="lazy"
+          decoding="async"
+          className="parallax-photo absolute inset-0 h-full w-full object-cover object-center"
         />
       </div>
     </section>

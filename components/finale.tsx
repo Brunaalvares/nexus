@@ -1,14 +1,15 @@
-import Image from "next/image";
-
 export function Finale() {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden">
-      <Image
+    <section className="relative min-h-[100svh] overflow-hidden bg-[#090909]">
+      <img
         src="/media/noite.webp"
         alt="Perspectiva noturna da torre On Residence no Nexus Coupé"
-        fill
-        sizes="100vw"
-        className="object-cover"
+        width={1500}
+        height={768}
+        loading="lazy"
+        decoding="async"
+        fetchPriority="low"
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-[#090909]/45" />
       <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">

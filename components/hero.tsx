@@ -1,17 +1,17 @@
-import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "cn";
 
 export function Hero() {
   return (
-    <section id="topo" className="relative min-h-[100svh] overflow-hidden">
-      <Image
+    <section id="topo" className="relative min-h-[100svh] overflow-hidden bg-[#090909]">
+      <img
         src="/media/hero.webp"
         alt="Perspectiva do Nexus Coupé ao entardecer, com as torres, o mall e a avenida à frente"
-        fill
-        priority
-        sizes="100vw"
-        className="hero-still object-cover object-center"
+        width={1800}
+        height={1229}
+        fetchPriority="high"
+        decoding="async"
+        className="hero-still absolute inset-0 h-full w-full object-cover object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-[#090909]/35 to-[#090909]/25" />
       <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pt-28 pb-16 md:px-14 md:pb-20">

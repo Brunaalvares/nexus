@@ -132,6 +132,13 @@
   }
 }
 
+#galeria > article,
+#complexo > article,
+main > section:not(#topo):not(#galeria):not(#complexo) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100svh;
+}
+
 .metal {
   background: linear-gradient(185deg, #ffffff 0%, #e7e1d6 38%, #9a9388 100%);
   -webkit-background-clip: text;

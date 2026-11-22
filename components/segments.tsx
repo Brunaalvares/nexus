@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const bands = [
   {
     index: "01",
@@ -46,12 +44,14 @@ export function Segments() {
         >
           <div className={i % 2 === 1 ? "md:order-2 md:col-span-7" : "md:col-span-7"}>
             <div className="relative aspect-[16/11] overflow-hidden">
-              <Image
+              <img
                 src={band.image}
                 alt={band.alt}
-                fill
-                sizes="(min-width: 768px) 60vw, 100vw"
-                className="object-cover"
+                width={1500}
+                height={900}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
           </div>
